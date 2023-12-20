@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import {GoogleAuthProvider,getAuth,signInWithPopup} from "firebase/auth"
+import {GithubAuthProvider, GoogleAuthProvider,getAuth,signInWithPopup} from "firebase/auth"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,12 +16,15 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const provider = new GoogleAuthProvider();
+const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider()
+
 const auth = getAuth()
 
-export const authUsingGoogle = () => {
+
+export const authUsingGoogle = async () => {
     try {
-        const googleAuth = signInWithPopup(auth, provider)
+        const googleAuth = await signInWithPopup(auth, googleProvider)
         
         return googleAuth
     } catch (err) {
@@ -29,3 +32,12 @@ export const authUsingGoogle = () => {
     }
 }
 
+export const authUsingGithub = async () => {
+    try {
+        const githubAuth = await signInWithPopup(auth, githubProvider);
+
+        return githubAuth;
+    } catch (err) {
+        console.log(err);
+    }
+};

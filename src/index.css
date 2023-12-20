@@ -6,6 +6,6 @@
 
 @layer components{
     .btn{
-        @apply w-full bg-[#0f172a] text-white/50 py-3 rounded-full my-5 flex items-center justify-center gap-2
+        @apply w-full bg-[#0f172a] text-white/50 py-3 rounded-full my-5 flex items-center justify-center gap-2 hover:opacity-70
     }
 }

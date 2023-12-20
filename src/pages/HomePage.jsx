@@ -1,7 +1,44 @@
 import googleLogo from "../assets/icons/google.png";
-import gitHubLogo from "../assets/icons/github.png"
+import gitHubLogo from "../assets/icons/github.png";
+import { authUsingGithub, authUsingGoogle } from "../common/firebase";
+import axiosInstance from "../utils/axios";
+import { useState } from "react";
 
 const HomePage = () => {
+    const [user, setUser] = useState({});
+
+    const handleGoogleAuth = async (e) => {
+        e.preventDefault();
+        try {
+            const googleUser = await authUsingGoogle();
+
+            const { data } = await axiosInstance.post("/auth", {
+                accessToken: googleUser.user.accessToken,
+            });
+
+            setUser({});
+            setUser(data);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+
+    const handleGithutAuth = async (e) => {
+        e.preventDefault();
+        try {
+            const githubUser = await authUsingGithub();
+
+            const { data } = await axiosInstance.post("/auth", {
+                accessToken: githubUser.user.accessToken,
+            });
+            setUser({});
+            setUser(data);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
     return (
         <>
             <div className="w-full px-12 h-screen bg-[#0f172a] flex items-center justify-center">
@@ -10,7 +47,7 @@ const HomePage = () => {
                         Create Your Task Today
                     </h1>
 
-                    <button className="btn">
+                    <button className="btn" onClick={handleGoogleAuth}>
                         <img
                             src={googleLogo}
                             alt="google logo"
@@ -25,7 +62,7 @@ const HomePage = () => {
                         <hr className="w-1/2 border-white/20" />
                     </div>
 
-                    <button className="btn">
+                    <button className="btn" onClick={handleGithutAuth}>
                         <img
                             src={gitHubLogo}
                             alt="google logo"
