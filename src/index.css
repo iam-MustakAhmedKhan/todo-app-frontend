@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .btn{
+        @apply w-full bg-[#0f172a] text-white/50 py-3 rounded-full my-5 flex items-center justify-center gap-2
+    }
+}
