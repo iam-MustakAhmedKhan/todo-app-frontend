@@ -8,4 +8,7 @@
     .btn{
         @apply w-full bg-[#0f172a] text-white/50 py-3 rounded-full my-5 flex items-center justify-center gap-2 hover:opacity-70
     }
+    .navlink{
+        @apply py-2 transition-all px-4 hover:bg-[#34436196] font-inter text-[14px] hover:text-white
+    }
 }

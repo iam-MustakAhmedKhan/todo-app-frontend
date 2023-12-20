@@ -2,52 +2,54 @@ import googleLogo from "../assets/icons/google.png";
 import gitHubLogo from "../assets/icons/github.png";
 import { authUsingGithub, authUsingGoogle } from "../common/firebase";
 import axiosInstance from "../utils/axios";
-import { useState } from "react";
+import { useContext } from "react";
+import { Toaster, toast } from "react-hot-toast";
+import { UserContext } from "../App";
+import { storeInSession } from "../common/session";
+import { Navigate } from "react-router-dom";
 
 const HomePage = () => {
-    const [user, setUser] = useState({});
+    
+    const { user, setUser } = useContext(UserContext)
 
-    const handleGoogleAuth = async (e) => {
+    const handleAuth = async (e,provider) => {
         e.preventDefault();
         try {
-            const googleUser = await authUsingGoogle();
+            const loadingToast = toast.loading("Sign in...");
+
+            const authProvider = provider=="google" ? await authUsingGoogle() : await authUsingGithub()
 
             const { data } = await axiosInstance.post("/auth", {
-                accessToken: googleUser.user.accessToken,
+                accessToken: authProvider.user.accessToken,
             });
 
-            setUser({});
+ 
             setUser(data);
+            storeInSession('user', JSON.stringify(data));
+
+            toast.dismiss(loadingToast);
+            toast.success("sign in successfully");
         } catch (e) {
-            console.log(e);
+            toast.error("Couldn't Login");
         }
-    };
 
+    }
 
-    const handleGithutAuth = async (e) => {
-        e.preventDefault();
-        try {
-            const githubUser = await authUsingGithub();
-
-            const { data } = await axiosInstance.post("/auth", {
-                accessToken: githubUser.user.accessToken,
-            });
-            setUser({});
-            setUser(data);
-        } catch (e) {
-            console.log(e);
-        }
-    };
-
-    return (
-        <>
+    return user.accessToken!==null ? (
+        <Navigate to="/dashboard/all-task" />
+    ) : (
+        <div>
+            <Toaster />
             <div className="w-full px-12 h-screen bg-[#0f172a] flex items-center justify-center">
                 <div className="bg-[#141e33] min-w-[400px] p-4 rounded-md">
                     <h1 className="text-xl text-white/50 font-inter text-center">
                         Create Your Task Today
                     </h1>
 
-                    <button className="btn" onClick={handleGoogleAuth}>
+                    <button
+                        className="btn"
+                        onClick={(e) => handleAuth(e, "google")}
+                    >
                         <img
                             src={googleLogo}
                             alt="google logo"
@@ -62,7 +64,10 @@ const HomePage = () => {
                         <hr className="w-1/2 border-white/20" />
                     </div>
 
-                    <button className="btn" onClick={handleGithutAuth}>
+                    <button
+                        className="btn"
+                        onClick={(e) => handleAuth(e, "github")}
+                    >
                         <img
                             src={gitHubLogo}
                             alt="google logo"
@@ -72,8 +77,10 @@ const HomePage = () => {
                     </button>
                 </div>
             </div>
-        </>
+        </div>
     );
+        
+    
 };
 
 export default HomePage;
