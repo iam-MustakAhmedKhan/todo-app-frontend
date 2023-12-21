@@ -52,10 +52,10 @@ const Sidebar = () => {
                 <NavLink to="all-task" className="navlink">
                     All Task's
                 </NavLink>
-                <NavLink to="completed" className="navlink">
+                <NavLink to="complete" className="navlink">
                     Completed Task's
                 </NavLink>
-                <NavLink to="incompleted" className="navlink">
+                <NavLink to="incomplete" className="navlink">
                     InCompleted Task's
                 </NavLink>
             </div>

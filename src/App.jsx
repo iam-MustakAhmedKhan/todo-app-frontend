@@ -10,7 +10,10 @@ export const UserContext = createContext(null);
 function App() {
     const [user, setUser] = useState({});
     const [isShow, setIsShow] = useState(false)
-    const [modalShow,setModalShow] = useState(false)
+    const [modalShow, setModalShow] = useState(false)
+    const [tasks, setTasks] = useState([]);
+    const [editMode, setEditMode] = useState(false)
+    const [singleTask, setSingleTask] = useState()
 
     useEffect(() => {
         let userSession = lookInSession("user");
@@ -27,8 +30,14 @@ function App() {
         setIsShow,
         isShow,
         modalShow,
-        setModalShow
-    }
+        setModalShow,
+        tasks,
+        setTasks,
+        editMode,
+        setEditMode,
+        singleTask,
+        setSingleTask
+    };
 
     return (
         <UserContext.Provider value={contex}>
@@ -37,9 +46,9 @@ function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="dashboard" element={<Dashboard />}>
                         <Route path="all-task" element={<ContentWrapper />} />
-                        <Route path="completed" element={<ContentWrapper route="complete" />} />
+                        <Route path="complete" element={<ContentWrapper route="complete" />} />
                         <Route
-                            path="incompleted"
+                            path="incomplete"
                             element={<ContentWrapper route="incomplete" />}
                         />
                     </Route>

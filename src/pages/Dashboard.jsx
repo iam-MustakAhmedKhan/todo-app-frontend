@@ -18,10 +18,12 @@ const Dashboard = () => {
         <>
             <div className="flex bg-[#0f172a] w-full h-screen text-white/50">
                 <Sidebar />
-                <div className="p-4 ml-[360px] max-sm:ml-0 w-full">
+                <div className="p-4 ml-[360px] max-sm:ml-0 w-full h-screen overflow-hidden">
                     <Navbar />
 
-                    <Outlet />
+                    <div className="overflow-y-auto h-[calc(100%-100px)]">
+                        <Outlet />
+                    </div>
                 </div>
             </div>
 
