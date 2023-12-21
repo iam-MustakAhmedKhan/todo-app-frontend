@@ -20,6 +20,8 @@ To install this project in you local machine you have to clone this repository f
 
 ## Folder Structure
 
+```tree
+
 ├── public
 ├── src
 │   ├── assets
@@ -34,17 +36,18 @@ To install this project in you local machine you have to clone this repository f
 ├── netlify.toml 
 ├── README.md
 └── .gitignore
+```
 
 
 ## Screenshots
 
 **login Page**
 
-![main page](image.png)
+![login page](image-1.png)
 
 **main page**
 
-![login page](image-1.png)
+![main page](image.png)
 
 
 ## Sever
