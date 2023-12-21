@@ -19,17 +19,21 @@ To install this project in you local machine you have to clone this repository f
 ```
 
 ## Folder Structure
-.
-├── public                                     
+
+├── public
 ├── src
-|   |-- assets
-|   |-- common
-|   |-- components
-|   |-- pages
-|   |-- utils                                       
-├── index.html                   
-├── netlify.toml
-└── README.md
+│   ├── assets
+│   ├── common
+│   ├── components
+│   ├── pages
+│   ├── utils
+├── index.html
+├── node_modules
+├── package.json
+├── package-lock.json 
+├── netlify.toml 
+├── README.md
+└── .gitignore
 
 
 ## Screenshots
@@ -46,7 +50,7 @@ To install this project in you local machine you have to clone this repository f
 ## Sever
 
 **BackEnd Repository**
-- [](https://github.com/iam-MustakAhmedKhan/todo-app-backend)
+- [Server Repository](https://github.com/iam-MustakAhmedKhan/todo-app-backend)
 
 
 ## Author
