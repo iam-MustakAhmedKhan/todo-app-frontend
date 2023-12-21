@@ -22,10 +22,10 @@ To install this project in you local machine you have to clone this repository f
 ## Screenshots
 
 **login Page**
-![log in page](image.png)
+![login page](image-1.png)
 
 **main page**
-![main page](image-1.png)
+![main page](image.png)
 
 
 
