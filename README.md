@@ -18,21 +18,35 @@ To install this project in you local machine you have to clone this repository f
   npm run dev
 ```
 
+## Folder Structure
+.
+├── public                                     
+├── src
+|   |-- assets
+|   |-- common
+|   |-- components
+|   |-- pages
+|   |-- utils                                       
+├── index.html                   
+├── netlify.toml
+└── README.md
+
 
 ## Screenshots
 
 **login Page**
-![login page](image-1.png)
 
-**main page**
 ![main page](image.png)
 
+**main page**
+
+![login page](image-1.png)
 
 
-## Tech / Libraries
-**Server:** Node, Express
+## Sever
 
-**Libraries:** mongoose, nodemon, swagger-ui-express, yamljs, dotenv, cors
+**BackEnd Repository**
+- [](https://github.com/iam-MustakAhmedKhan/todo-app-backend)
 
 
 ## Author
@@ -40,14 +54,5 @@ To install this project in you local machine you have to clone this repository f
 - [@iam-MustakAhmedKhan](https://github.com/iam-MustakAhmedKhan)
 
 
-## Usage/Examples
-
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
-```
 
 
